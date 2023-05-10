@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color:var(--body-color-root);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --body-color-root: #CDD1DC;
+    --font-family-root: 'Poppins', sans-serif;
+    --blue-color-root: #17283A;
+    --grey-color-root: #8291a5;
+    --grey-bordercolor-root: #8B95AD;
+    --green-color-root: #97EA9F;
+    --red-color-root: #b74150;
+    --white-color-root: #d8d8d8;
+    --black-color-root: #252525;
+    --header-footer-color-root:#31313D;
+    --orange-color-root:#F47650;
+}
+
+.popup-styling.mapboxgl-popup .mapboxgl-popup-content {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    ;
+}
