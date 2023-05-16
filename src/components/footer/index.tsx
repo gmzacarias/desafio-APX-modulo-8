@@ -9,7 +9,7 @@ export function Footer() {
     const YEAR = DATE.getFullYear();
 
     return (
-        <section className={css.footerContainer}>
+        <footer className={css.footerContainer}>
             <Link className={css.links} to="/login">
                 <img src={logo} className={css.logo} />
             </Link>
@@ -29,6 +29,6 @@ export function Footer() {
                 </Link>
             </div>
             <h3 className={css.copyright}>Copyright©{YEAR} Gaston Mauro Zacarias</h3>
-        </section>
+        </footer>
     )
 }

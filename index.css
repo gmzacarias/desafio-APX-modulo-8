@@ -3,11 +3,9 @@
 }
 
 body {
-    background-color:var(--body-color-root);
-    width: 100%;
-    height: 100%;
+    background-color: var(--body-color-root);
     margin: 0;
-    padding: 0;
+    padding: 0;   
 }
 
 :root {
@@ -20,8 +18,8 @@ body {
     --red-color-root: #b74150;
     --white-color-root: #d8d8d8;
     --black-color-root: #252525;
-    --header-footer-color-root:#31313D;
-    --orange-color-root:#F47650;
+    --header-footer-color-root: #31313D;
+    --orange-color-root: #F47650;
 }
 
 .popup-styling.mapboxgl-popup .mapboxgl-popup-content {
@@ -29,5 +27,4 @@ body {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    ;
 }

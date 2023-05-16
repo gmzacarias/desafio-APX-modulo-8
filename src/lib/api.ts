@@ -129,7 +129,22 @@ export async function deleteDataPet({ petId, token }) {
     return deletePet
 }
 
-
+/* Obtener las mascotas cercanas a mi ubicación */
+export async function NearPets({ lat, lng }) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/near-pets?lat=${lat}&lng=${lng}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const nearPetsRes = await response.json();
+      console.log(`Mascotas cercanas a la ubicación ${lat}, ${lng}:`, nearPetsRes);
+      return nearPetsRes;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
 

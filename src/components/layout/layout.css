@@ -1,9 +1,7 @@
-.rootLayout{
-    background-color: var(--body-color-root);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.layoutContainer {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+min-height:753px;
+height: fit-content;
 }
-

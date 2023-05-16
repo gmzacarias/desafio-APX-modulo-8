@@ -49,11 +49,13 @@ watch:dev,
       },
     resolve: {
         extensions: ['.tsx', '.js', '.ts'],
-        plugins: [new TsconfigPathsPlugin({/* options: see below */})]
+        plugins: [new TsconfigPathsPlugin({/* options: see below */})],
+    
         },
       
     output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+
 };

@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { MainButton } from "components/ui/buttons";
+import React from "react";
 
+import css from "./login.css"
 
 
 export function Login() {
     
-function handleClick(){
-
-}
-
-
 
     return (
-        <section>
+        <main className={css.loginContainer}>
             <input type="text"  />
             <input type="password" /> 
             <button>Iniciar Sesion</button>
             <button>Crear Cuenta</button>  
-        </section>
+        </main>
     )
 
 }

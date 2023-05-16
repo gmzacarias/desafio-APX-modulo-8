@@ -1,0 +1,13 @@
+.signUpContainer {
+    width: 60%;
+    height:fit-content;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    font-family: var(--font-family-root);
+    color: var(--blue-color-root);
+  }
