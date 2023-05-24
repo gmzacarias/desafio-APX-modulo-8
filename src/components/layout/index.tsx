@@ -8,16 +8,17 @@ import { Footer } from "components/footer"
 import css from "./layout.css"
 console.log(css)
 
-
-const footerStyle = { backgroundColor: "black", border: "solid 3px black", padding: 40, color: "white" }
-
 export function Layout() {
 
     return (
-        <main className={css.layoutContainer}>
-            <Header />
+        <div className={css.layoutContainer} >
+            <header>
+                <Header />
+            </header>
             <Outlet></Outlet>
-            <Footer />
-        </main>
+            <footer className={css.footer}>
+                <Footer />
+            </footer>
+        </div>
     )
 }

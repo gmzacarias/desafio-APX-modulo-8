@@ -72,6 +72,43 @@ export async function updateUser({ email, password, token, userId }) {
     return newUserData
 }
 
+
+/*Solicitar restablecer la contraseña*/
+export async function resetPassword(email: string) {
+    try {
+        const response = await fetch(API_BASE_URL + "/reset-password", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        })
+        const data = await response.json();
+        console.log(data.message)
+        return data;
+    }
+    catch (error) {
+        console.log(error)
+        return null
+    }
+}
+
+/*Restablecer la contraseña*/
+export async function resetPasswordConfirmation(token: string, newPassword: string) {
+    try {
+        const response = await fetch(API_BASE_URL + "/reset-password/" + token, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ newPassword })
+        })
+        const data = await response.json()
+        console.log(data.message);
+        return data;
+    }
+    catch (error) {
+        console.log(error)
+        return null
+    }
+}
+
 /*Crear reporte de una mascota*/
 export async function reportPet({ userId, token, petName, imageURL, lat, lng, found, zoneReport }) {
     try {
@@ -132,19 +169,19 @@ export async function deleteDataPet({ petId, token }) {
 /* Obtener las mascotas cercanas a mi ubicación */
 export async function NearPets({ lat, lng }) {
     try {
-      const response = await fetch(`${API_BASE_URL}/near-pets?lat=${lat}&lng=${lng}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const nearPetsRes = await response.json();
-      console.log(`Mascotas cercanas a la ubicación ${lat}, ${lng}:`, nearPetsRes);
-      return nearPetsRes;
+        const response = await fetch(`${API_BASE_URL}/near-pets?lat=${lat}&lng=${lng}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        const nearPetsRes = await response.json();
+        console.log(`Mascotas cercanas a la ubicación ${lat}, ${lng}:`, nearPetsRes);
+        return nearPetsRes;
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  }
+}
 
 
 

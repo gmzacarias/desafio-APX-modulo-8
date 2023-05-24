@@ -9,26 +9,27 @@ export function Footer() {
     const YEAR = DATE.getFullYear();
 
     return (
-        <footer className={css.footerContainer}>
-            <Link className={css.links} to="/login">
-                <img src={logo} className={css.logo} />
-            </Link>
-            
-            <div className={css.linksContainer}>
-                <h1 className={css.titleFooter}>Social Links</h1>
-                <Link className={css.links} to="https://www.linkedin.com/in/gastonmzacarias/" target="_blank">
-                    <h2 className={css.contactLinks}>Linkedin<FiLinkedin className={css.footerIcons} /></h2>
-                </Link>
-
-                <Link className={css.links} to="https://github.com/gmzacarias" target="_blank">
-                    <h2 className={css.contactLinks}>Github<FiGithub className={css.footerIcons} /> </h2>
-                </Link>
-
-                <Link className={css.links} to="mailto:gastonmzacarias@gmail.com" target="_blank">
-                    <h2 className={css.contactLinks}>Mail<FiMail className={css.footerIcons} /></h2>
+        <main className={css.footerContainer}>
+            <div className={css.logoContainer}>
+                <Link className={css.links} to="/">
+                    <img src={logo} className={css.logo} />
                 </Link>
             </div>
-            <h3 className={css.copyright}>Copyright©{YEAR} Gaston Mauro Zacarias</h3>
-        </footer>
+            <h1 className={css.titleFooter}>Social Links</h1>
+            <div className={css.linksContainer}>
+                <Link className={css.links} to="https://www.linkedin.com/in/gastonmzacarias/" target="_blank">
+                    <FiLinkedin className={css.footerIcons} />
+                </Link>
+                <Link className={css.links} to="https://github.com/gmzacarias" target="_blank">
+                    <FiGithub className={css.footerIcons} />
+                </Link>
+                <Link className={css.links} to="mailto:gastonmzacarias@gmail.com" target="_blank">
+                    <FiMail className={css.footerIcons} />
+                </Link>
+            </div>
+            <div className={css.copyrightContainer}>
+                <h3 className={css.copyright}>Copyright©{YEAR} Gaston Mauro Zacarias</h3>
+            </div>
+        </main>
     )
 }

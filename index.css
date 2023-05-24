@@ -1,3 +1,22 @@
+:root {
+    --body-color-root: #EFEEF1;
+    --font-family-root: 'Montserrat Alternates', sans-serif;
+    --white-color-root: #ffffff;
+    --lightgrey-color-root: #b7c7c8;
+    --blue-color-root: #17283A;
+    --grey-color-root: #4D4751;
+    --grey-bordercolor-root: #8B95AD;
+    --green-color-root: #2cb67d;
+    --red-color-root: #b74150;
+
+    --black-color-root: #252525;
+    --orange-color-root: #F47650;
+    --purple-color-root: #440279;
+    --darkpurple-color-root: #2E0152;
+    ;
+    --secondaryfont-family-root: 'Merriweather', serif;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,26 +24,20 @@
 body {
     background-color: var(--body-color-root);
     margin: 0;
-    padding: 0;   
+    font-family: var(--font-family-root);
+    font-size: 18px;
+    color: var(--grey-color-root);
 }
 
-:root {
-    --body-color-root: #CDD1DC;
-    --font-family-root: 'Poppins', sans-serif;
-    --blue-color-root: #17283A;
-    --grey-color-root: #8291a5;
-    --grey-bordercolor-root: #8B95AD;
-    --green-color-root: #97EA9F;
-    --red-color-root: #b74150;
-    --white-color-root: #d8d8d8;
-    --black-color-root: #252525;
-    --header-footer-color-root: #31313D;
-    --orange-color-root: #F47650;
+
+.app {
+    min-height: 100vh;
 }
 
-.popup-styling.mapboxgl-popup .mapboxgl-popup-content {
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+@media (min-width: 769px) {
+    .app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

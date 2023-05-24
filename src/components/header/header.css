@@ -1,8 +1,8 @@
 
 .headerContainer{
-    background-color: var(--header-footer-color-root);
+    background-color: var(--white-color-root);
     width: 100%;
-    height: 90px;
+    height: 80px;
     padding: 20px 14px;
     display: flex;
     flex-direction: row;
@@ -10,6 +10,7 @@
     align-items: center;
     gap: 20px;
     font-family: var(--font-family-root);
+    font-size: 16px;
     text-decoration: none;
     position: relative;
 }

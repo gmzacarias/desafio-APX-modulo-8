@@ -26,7 +26,7 @@
 }
 
 .navbarNav.show {
-  background-color: var(--header-footer-color-root);
+  background-color: var(--white-color-root);
   position: absolute;
   top:324px;
   left: 0;
@@ -56,9 +56,9 @@
   border-radius: 5px;
   color: var(--grey-color-root);
   text-decoration: none;
-  border-color:var(--orange-color-root);
-  background-image: -webkit-linear-gradient(45deg, var(--orange-color-root) 50%, transparent 50%);
-  background-image: linear-gradient(45deg,var(--orange-color-root) 50%, transparent 50%);
+  border-color:var(--purple-color-root);
+  background-image: -webkit-linear-gradient(45deg, var(--purple-color-root) 50%, transparent 50%);
+  background-image: linear-gradient(45deg,var(--purple-color-root) 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
   -webkit-transition: background 300ms ease-in-out;
@@ -66,7 +66,7 @@
 }
 
 .navLink:hover {
-  background-color: var(--orange-color-root);
+  background-color: var(--purple-color-root);
   background-position: 0;
   color:var(--white-color-root)
 }

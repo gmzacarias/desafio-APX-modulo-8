@@ -11,6 +11,7 @@ import { EditPet } from "pages/edit-pet";
 import { CheckEmail } from "pages/check-email";
 import { Login } from "pages/login";
 import { SignUp } from "pages/signup";
+import { About } from "pages/about";
 
 
 export const AppRoutes = createBrowserRouter([
@@ -22,6 +23,10 @@ export const AppRoutes = createBrowserRouter([
             {
                 index: true,
                 element: <Home />,
+            },
+            {
+                path: "/about",
+                element: <About />,
             },
             {
                 path: "/reportpet",

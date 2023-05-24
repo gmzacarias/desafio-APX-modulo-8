@@ -10,14 +10,14 @@ export function Header() {
     
     
     return (
-        <header className={css.headerContainer}>
+        <main className={css.headerContainer}>
             <div className={css.logoContainer}>
                  <Link className={css.links} to="/">
                 <img src={logo} className={css.logo} />
             </Link>
             </div>
             <NavBar />
-        </header>
+        </main>
     )
 
 }

@@ -1,0 +1,8 @@
+.textDisplay {
+    margin: 10px 0;
+    font-family: var(--font-family-root);
+    color: var(--grey-color-root);
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}

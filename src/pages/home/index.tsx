@@ -1,33 +1,33 @@
-
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { MainButton } from "components/ui/buttons";
-import {Dropzone}from "components/dropzone";
+import { useNavigate } from "react-router-dom";
+import { Button } from "components/ui/buttons";
+import { Dropzone } from "components/dropzone";
+
+import { FiMapPin } from "react-icons/fi";
+import { Title } from "components/ui/title";
+import { SubTitle } from "components/ui/subtitle";
+import { TextDisplay } from "components/ui/text-display";
 import css from "./home.css"
-import BackgroundHome from "../../assets/background-home.png"
-
-
 
 export function Home() {
-    
+    const navigate = useNavigate();
 
 
-    
-function handleClick(){
-   
-}
-
-
+    function handleClick() {
+        const redirect = navigate("/about")
+    }
 
     return (
         <section className={css.homeContainer}>
-            <p>Encontrá y reportá mascotas perdidas cerca de tu ubicación</p>
-            {/* <Dropzone /> */}
-            
-            {/* <Mapbox location={{ center: [-58.3815704, -34.6037389] }} /> */}
-            <MainButton onClick={handleClick} className="my-location" color={"blue"}>dar mi ubicacion actual</MainButton>
-           <img src={BackgroundHome} alt="background-home" className={css.backgroundImage} /> <h1>mascotas perdidas cerca tuyo</h1>
+            <Title>Bienvenido a Pets</Title>
+            <SubTitle>Nos dedicamos a ayudar a reportar y encontrar mascotas perdidas!</SubTitle>
+            <TextDisplay>En nuestra plataforma, entendemos la importancia de encontrar mascotas perdidas lo más rápido posible.<br></br>Por eso, hemos implementado una función especial que utiliza tu ubicación para mostrarte las mascotas reportadas como perdidas en tu área cercana.</TextDisplay>
+            <div className={css.buttonsContainer}>
+                <Button className={css.button} onClick={null} color="primary" width="200px">
+                    <FiMapPin className={css.icons} />
+                    Mi ubicación</Button>
+                <Button onClick={handleClick} color="green" width="200px">¿Cómo funciona Pets App?</Button>
+            </div>
         </section>
     )
-
 }
