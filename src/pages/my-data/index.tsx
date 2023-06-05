@@ -10,7 +10,7 @@ export function MyData() {
 const data= useRecoilValue(dataUserState)
 console.log(data)
 
-const {email,userName,profilePhoto}=data
+const {email,userName,profilePhoto,id}=data
     
     function handleClick(){
         toast('Event has been created', {
@@ -27,6 +27,7 @@ const {email,userName,profilePhoto}=data
             <div>
                 <div>mis datos</div>
                 <h1>{userName}</h1>
+                <p>{id}</p>
                 <p>{email}</p>
                <img src={profilePhoto} alt="" />
                 <button onClick={handleClick}></button>

@@ -11,6 +11,16 @@ export function loginTrue(){
           })
 }
 
+export function newUser(){
+  toast.success("Usuario creado correctamente", {
+    action: {
+      label: 'close',
+      onClick: () => console.log('Undo')
+    },
+  })
+}
+
+
 
 export function loginError(){
     toast.error("Contraseña Incorrecta", {

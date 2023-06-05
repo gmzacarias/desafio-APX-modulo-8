@@ -8,7 +8,7 @@ import { Input } from "components/ui/inputs";
 import { Button } from "components/ui/buttons";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { dataUserState } from "state/atoms";
-import { imageNotFound, signUpError } from "components/sonner";
+import { imageNotFound, newUser, signUpError } from "components/sonner";
 import { signUp } from "lib/api";
 
 export function SignUp() {
@@ -36,18 +36,12 @@ export function SignUp() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
-        if (!value) {
-            signUpError()
-        } else {
             // Actualizar el estado del campo correspondiente
             SetDataUser((prevData) => ({
                 ...prevData,
                 [name]: value
             }));
-        }
-
-
-
+    
     };
 
 
@@ -72,7 +66,16 @@ export function SignUp() {
         if (dataUser.userName && dataUser.email && dataUser.password && dataUser.profilePhoto) {
             try {
                 const response = await signUp(dataUser.userName, dataUser.email, dataUser.password, dataUser.profilePhoto);
-                console.log(response)
+                if (response) {
+                    SetDataUser((prevData)=>({
+                        ...prevData,
+                        id:response.id,
+                    }))
+                }
+
+                console.log("data guardada",dataUser)
+                newUser()
+                navigate("/about")
             } catch (error) {
                 console.log(error)
             }
@@ -95,7 +98,6 @@ export function SignUp() {
                 </div>
 
                 <div className={css.inputsContainer}>
-
                     <label>Email:</label>
                     <Input
                         type="email"
@@ -106,7 +108,6 @@ export function SignUp() {
                         width="300px"
                         required
                     />
-
                     <label>Password:</label>
                     <Input
                         type="password"
@@ -117,8 +118,6 @@ export function SignUp() {
                         width="300px"
                         required
                     />
-
-
                     <label>Username:</label>
                     <Input
                         type="text"
@@ -131,6 +130,7 @@ export function SignUp() {
                     />
 
                     <button type="submit">Submit</button>
+                    
 
                 </div>
 

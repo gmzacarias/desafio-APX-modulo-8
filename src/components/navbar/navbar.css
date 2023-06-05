@@ -14,28 +14,35 @@
   display: flex;
 }
 
-.icons {
+.iconsMenu {
   display: flex;
-  width:40px;
+  width: 40px;
   height: 40px;
 }
 
-.navbar {
+.icons {
+  display: flex;
+  width: 20px;
+  height: 18px;
+}
+
+
+.navBar {
   transform: translateY(0);
   display: none;
 }
 
-.navbar.show {
-  background-color: var(--grey-color-root);
+.navBar.open {
+  background-color: var(--white-color-root);
   position: absolute;
-  top:324px;
+  top: 286px;
   left: 0;
   width: 100%;
-  height:250px;
+  height: auto;
   margin: 0;
   padding: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   gap: 10px;
   list-style: none;
@@ -51,15 +58,16 @@
 }
 
 .navLink {
+  border-color: var(--purple-color-root);
+  border-radius: 5px;
   padding: 10px;
   display: flex;
   justify-content: center;
-  border-radius: 5px;
+  gap:5px;
   color: var(--grey-color-root);
   text-decoration: none;
-  border-color:var(--purple-color-root);
   background-image: -webkit-linear-gradient(45deg, var(--purple-color-root) 50%, transparent 50%);
-  background-image: linear-gradient(45deg,var(--purple-color-root) 50%, transparent 50%);
+  background-image: linear-gradient(45deg, var(--purple-color-root) 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
   -webkit-transition: background 300ms ease-in-out;
@@ -69,21 +77,21 @@
 .navLink:hover {
   background-color: var(--purple-color-root);
   background-position: 0;
-  color:var(--white-color-root)
+  color: var(--white-color-root)
 }
 
 
-@media (min-width: 769px) {
-  
-  .navMenu{
+@media (min-width: 1000px) {
+
+  .navMenu {
     display: none;
   }
 
-  .navbar .navItem .navLink {
+  .navBar .navItem .navLink {
     display: flex;
   }
 
-  .navbar {
+  .navBar {
     margin: 0;
     padding: 5px;
     display: flex;
@@ -94,4 +102,3 @@
   }
 
 }
-

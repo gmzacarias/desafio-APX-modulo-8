@@ -36,6 +36,7 @@ export const isLoggedState=atom({
 export const dataUserState=atom({
     key:"dataUserState",
     default:{
+        id:"",
         userName:"",
         email:"",
         password:"",
@@ -44,9 +45,3 @@ export const dataUserState=atom({
     effects_UNSTABLE:[persistAtom]
 })
 
-
-export const burguerMenuState=atom({
-    key:"burguerMenuState",
-    default:false,
-
-})
