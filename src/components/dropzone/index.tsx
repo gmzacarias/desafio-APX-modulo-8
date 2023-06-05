@@ -1,60 +1,68 @@
-import React, {useState,useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { useState } from 'react';
+import { useDropzone } from 'react-dropzone'
 import dropzoneImage from "../../assets/dropzoneImage.jpg"
-import css from "./index.css"
+import css from './dropzone.css';
+
+type FileWithDataURL = {
+  file: File;
+  dataURL: string;
+};
+
+type DropzoneProps={
+  // onFileUpload: (file: File) => void;
+  onFileUpload: (fileWithDataURL: FileWithDataURL) => void;
+  name:string,
+  required:"true"|"false"
+}
 
 
 
-export function Dropzone (props){
-    const [files, setFiles] = useState([]);
-  const {getRootProps, getInputProps} = useDropzone({
+export function Dropzone({onFileUpload,name}:DropzoneProps) {
+  const [preview, setPreview] = useState("");
+  const [showDefaultImage, setShowDefaultImage] = useState(true);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       'image/*': []
     },
-    maxFiles:1,
+    maxFiles: 1,
+  //   onDrop: (files: File[]) => {
+  //     const file = files[0];
+  //     const filePreview = URL.createObjectURL(file);
+  //     setPreview(filePreview);
+  //     setShowDefaultImage(false)
+  //     onFileUpload(file)
+  //     setSelectedFile(file);
+  //   },
+  // });
+  onDrop: (files: File[]) => {
+    const file = files[0];
+    const reader = new FileReader();
 
-    
-    onDrop: acceptedFiles => {
-      setFiles(acceptedFiles.map(file => Object.assign(file, {
-        preview:URL.createObjectURL(file)
-      })));
-    }
-  });
-  
-  const thumbs = files.map(file => (
-    <div className={css.thumb} key={file.name}>
-      <div className={css.thumbInner}>
-        <img
-          src={file.preview}
-          className={css.img}
-          // Revoke data uri after image is loaded
-          onLoad={() => { URL.revokeObjectURL(file.preview) }}
-        />
+    reader.onload = (event) => {
+      const dataURL= event.target.result as string;
+      const filePreview = URL.createObjectURL(file);
+      setPreview(filePreview);
+      setShowDefaultImage(false);
+      onFileUpload({file, dataURL});
+      setSelectedFile(file);
+    };
+
+    reader.readAsDataURL(file);
+  },
+});
+  return (
+    <div>
+      <div {...getRootProps()}>
+        <input {...getInputProps()} />
+        {showDefaultImage ? (
+          <img className={css.img} src={dropzoneImage}alt="Imagen por defecto" />
+        ) : (
+          <img className={css.img}  src={preview} alt="Vista previa de la imagen" />
+        )}
       </div>
     </div>
-  ));
 
-  useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
-  }, []);
-
-  return (
-    <section className="container">
-      <aside className={css.thumbsContainer}>
-        {thumbs.length > 0 ? thumbs : (
-          <div className={css.thumb} key="dropzone-image">
-            <div className={css.thumbInner}>
-              <img src={dropzoneImage} className={css.img} />
-            </div>
-          </div>
-        )}
-      </aside>
-      <div {...getRootProps({className: 'dropzone'})}>
-        <input {...getInputProps()} />
-       <button>subi tu imagen</button>
-      </div>
-    </section>
   );
 }
 

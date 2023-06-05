@@ -2,7 +2,7 @@ import React from "react";
 import css from "./subtitle.css"
 
 type Props={
-    children:string
+    children:string|any
 }
 
 export function SubTitle(props:Props){

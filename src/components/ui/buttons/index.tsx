@@ -13,10 +13,11 @@ const colors = {
 
 type ButtonProps = {
     children: String|any;
+    type:"button"|"reset"|"submit",
     className?: any
     width?:String|any
     color: keyof typeof colors // solo se puedan pasar colores válidos.
-    onClick?: (e?) => void | null
+    onClick?: (e?) => void | any
 }
 
 export function Button(props: ButtonProps) {

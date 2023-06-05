@@ -1,11 +1,11 @@
 import React from "react";
 import css from "./about.css";
 import { useNavigate, Link } from 'react-router-dom';
-import { Login } from "pages/login";
+import { SignIn } from "pages/signin";
 import { Title } from "components/ui/title";
 
 
-import {TextDisplay} from "components/ui/text-display";
+import { TextDisplay } from "components/ui/text-display";
 
 export function About() {
   return (

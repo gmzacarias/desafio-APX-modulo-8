@@ -34,7 +34,8 @@
 
 @media(min-width:769px) {
   .homeContainer {
-    height: 472px;
+    width: 60%;
+    height: 532px;
   }
 
   .buttonsContainer {

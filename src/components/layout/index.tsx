@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { SearchForm } from "../search-form"
+
 import { Header } from "components/header";
 import { Footer } from "components/footer"
 

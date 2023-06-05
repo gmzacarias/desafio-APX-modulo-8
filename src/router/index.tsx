@@ -8,10 +8,12 @@ import { ReportPet } from "pages/report-pet";
 import { MyReports } from "pages/my-reports";
 import { NearPets } from "pages/near-pets";
 import { EditPet } from "pages/edit-pet";
-import { CheckEmail } from "pages/check-email";
-import { Login } from "pages/login";
+import { Auth } from "pages/auth";
+import { SignIn } from "pages/signin";
 import { SignUp } from "pages/signup";
 import { About } from "pages/about";
+import { ForgotPassword } from "pages/forgot-password";
+import { ResetPassword } from "pages/reset-password";
 
 
 export const AppRoutes = createBrowserRouter([
@@ -46,15 +48,23 @@ export const AppRoutes = createBrowserRouter([
             },
             {
                 path: "/auth",
-                element: <CheckEmail />,
+                element: <Auth />,
             },
             {
                 path: "/auth/signin",
-                element: <Login />,
+                element: <SignIn />,
             },
             {
                 path: "/auth/signup",
                 element: <SignUp />,
+            },
+            {
+                path: "/forgot-password",
+                element: <ForgotPassword />
+            },
+            {
+                path: "/reset-password",
+                element: <ResetPassword />
             },
             {
                 path: "/nearpets",

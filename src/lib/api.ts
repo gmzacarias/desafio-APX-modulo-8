@@ -1,53 +1,74 @@
 // const API_BASE_URL = "https://desafio-apx-modulo-7.onrender.com"
 const API_BASE_URL = "http://localhost:3000";
 
-
 /*verificando si existe mail en la DB* */
-export async function checkEmail(email: string) {
+export async function checkEmail(email?: string) {
     try {
         const verifyEmail = await fetch(API_BASE_URL + "/check-email" + "?email=" + email, {
             method: "GET",
-            headers: { "content-Type": "application/json" },
-            body: JSON.stringify({ email })
+            headers: { "content-type": "application/json" },
         })
-        console.log("chequeando si existe mail", verifyEmail)
-        return verifyEmail
+        if (verifyEmail.ok) {
+            const response = await verifyEmail.json();
+            console.log("Mensaje del servidor:", response.message);
+
+            if (response.message === "El correo electrónico existe en la base de datos") {
+                return true;
+            }
+        } else {
+            console.log("El correo electrónico no existe en la base de datos,seras redirigido a crearte una cuenta 😉");
+            return false;
+        }
+
     } catch (error) {
         console.log(error)
+        return false
     }
 }
 
 /*iniciar sesion*/
 export async function signIn(email: string, password: string) {
+
     try {
         const user = { email, password };
         const checkToken = await fetch(API_BASE_URL + "/auth/token", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "content-type": "application/json" },
             body: JSON.stringify(user)
         })
-        console.log(`inicio de sesion de email:${email},password:${password}`)
-        return checkToken
+        if (!checkToken.ok) {
+            throw new Error("Error en la solicitud")
+        }
+        const token = await checkToken.json();
+        return { token };
     } catch (error) {
         console.log(error)
+        return { token: null }
     }
 }
 
 /*Crear Cuenta*/
-export async function signUp(userName: string, email: string, password: string) {
+export async function signUp(userName: string, email: string, password: string, profilePhoto: string) {
     try {
-        const createNewUser = { userName, email, password };
-        const registerUser = await fetch(API_BASE_URL + "/auth", {
+        const newUser = {
+            userName: userName,
+            email: email,
+            password: password,
+            profilePhoto: profilePhoto
+        }
+        const registerUser = await fetch(API_BASE_URL + "/auth/signup", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(createNewUser)
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(newUser)
         })
-        console.log(`usuario registrado correctamente,
-        username:${userName},
-        email:${email},
-        password:${password}
-        `)
-        return registerUser
+
+        if (registerUser.ok) {
+            const user = await registerUser.json();
+            console.log("Usuario registrado correctamente:", user);
+            return user;
+        } else {
+            console.log("Error al registrar el usuario:", registerUser.status);
+        }
     } catch (error) {
         console.log(error)
     }
@@ -62,7 +83,7 @@ export async function updateUser({ email, password, token, userId }) {
     const updateUserData = await fetch(API_BASE_URL + "/update-user" + "?userId=" + userId, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json",
+            "content-type": "application/json",
             Authorization: authorization
         },
         body: JSON.stringify(data)
@@ -78,7 +99,7 @@ export async function resetPassword(email: string) {
     try {
         const response = await fetch(API_BASE_URL + "/reset-password", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "content-type": "application/json" },
             body: JSON.stringify({ email })
         })
         const data = await response.json();
@@ -96,7 +117,7 @@ export async function resetPasswordConfirmation(token: string, newPassword: stri
     try {
         const response = await fetch(API_BASE_URL + "/reset-password/" + token, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "content-type": "application/json" },
             body: JSON.stringify({ newPassword })
         })
         const data = await response.json()
@@ -117,7 +138,7 @@ export async function reportPet({ userId, token, petName, imageURL, lat, lng, fo
         const createPet = await fetch(API_BASE_URL + "/create-pet" + "?userId" + userId, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "content-type": "application/json",
                 Authorization: authorization,
             },
             body: JSON.stringify(data)
@@ -138,7 +159,7 @@ export async function updateDataPet({ petId, token, petName, imageURL, lat, lng,
         const updatePet = await fetch(API_BASE_URL + "/update-pet" + "?petId=" + petId, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json",
+                "content-type": "application/json",
                 Authorization: authorization,
             },
             body: JSON.stringify(data)
@@ -158,7 +179,7 @@ export async function deleteDataPet({ petId, token }) {
     const deletePet = await fetch(API_BASE_URL + "/pet" + "?petId" + petId, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json",
+            "content-type": "application/json",
             Authorization: authorization,
         }
     })
@@ -172,7 +193,7 @@ export async function NearPets({ lat, lng }) {
         const response = await fetch(`${API_BASE_URL}/near-pets?lat=${lat}&lng=${lng}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
+                'content-type': 'application/json',
             },
         });
         const nearPetsRes = await response.json();

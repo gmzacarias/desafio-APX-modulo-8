@@ -20,13 +20,13 @@
   height: 40px;
 }
 
-.navbarNav {
+.navbar {
   transform: translateY(0);
   display: none;
 }
 
-.navbarNav.show {
-  background-color: var(--white-color-root);
+.navbar.show {
+  background-color: var(--grey-color-root);
   position: absolute;
   top:324px;
   left: 0;
@@ -34,8 +34,8 @@
   height:250px;
   margin: 0;
   padding: 10px;
-  display:flex;
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   gap: 10px;
   list-style: none;
@@ -43,6 +43,7 @@
   transform: translateY(-100%);
   transition: transform 0.2s ease-in-out;
 }
+
 
 .navItem {
   text-align: center;
@@ -78,11 +79,11 @@
     display: none;
   }
 
-  .navbarNav .navItem .navLink {
+  .navbar .navItem .navLink {
     display: flex;
   }
 
-  .navbarNav {
+  .navbar {
     margin: 0;
     padding: 5px;
     display: flex;
